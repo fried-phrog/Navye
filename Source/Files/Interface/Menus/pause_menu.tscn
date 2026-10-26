@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlhi0yrfcb4bu"]
+
+[ext_resource type="Script" path="res://Files/Interface/Menus/Pause_menu.gd" id="1_6drum"]
+[ext_resource type="Shader" path="res://Files/Interface/Menus/pause_menu.gdshader" id="2_na5mv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27phe"]
+shader = ExtResource("2_na5mv")
+shader_parameter/amount = 3.0
+
+[node name="Pause menu" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6drum")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_27phe")
+layout_mode = 0
+offset_left = -4414.0
+offset_top = -2925.0
+offset_right = 4436.0
+offset_bottom = 2914.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VerticalBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="paused" type="Label" parent="MarginContainer/VerticalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.0941176, 1)
+theme_override_colors/font_shadow_color = Color(0.866667, 0.631373, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.376471, 0.423529, 0.219608, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Main menu" type="Button" parent="MarginContainer/VerticalBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="Resume" type="Button" parent="MarginContainer/VerticalBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[connection signal="pressed" from="MarginContainer/VerticalBoxContainer/Main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VerticalBoxContainer/Resume" to="." method="_on_resume_pressed"]

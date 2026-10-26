@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbeewq712u8r4"]
+
+[ext_resource type="Script" path="res://Files/Interface/Menus/main_menu.gd" id="1_iu0f7"]
+[ext_resource type="TileSet" uid="uid://d4h6f0rejv5wg" path="res://Files/Levels/level.tres" id="2_qtpbv"]
+
+[node name="MainMenu" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iu0f7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 301.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VerticalBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VerticalBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VerticalBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer/VerticalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.0941176, 1)
+theme_override_colors/font_shadow_color = Color(0.866667, 0.631373, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.376471, 0.423529, 0.219608, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.0941176, 1)
+theme_override_colors/font_shadow_color = Color(0.866667, 0.631373, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.376471, 0.423529, 0.219608, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 42
+text = "Nav'ye"
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(18.0216, 15.1761)
+tile_set = ExtResource("2_qtpbv")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(0, 65536, 4, 65536, 327680, 4, 131072, 327680, 4, 196608, 131072, 4, 262144, 262144, 4, 1, 262144, 4, 65537, 65536, 4, 131073, 196608, 4, 196609, 327680, 4, 262145, 131072, 4, 2, 327680, 4, 65538, 327680, 4, 131074, 196608, 4, 196610, 327680, 4, 262146, 196608, 4, 3, 262144, 4, 65539, 0, 4, 131075, 131072, 4, 196611, 196608, 4, 262147, 262144, 4, 4, 65536, 4, 65540, 262144, 4, 131076, 131072, 4, 196612, 65536, 4, 262148, 0, 4, 5, 65536, 4, 65541, 262144, 4, 131077, 327680, 4, 196613, 65536, 4, 262149, 196608, 4, 6, 327680, 4, 65542, 131072, 4, 131078, 262144, 4, 196614, 0, 4, 262150, 131072, 4)
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VerticalBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VerticalBoxContainer/Quit" to="." method="_on_quit_pressed"]

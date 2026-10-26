@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba36rwmj0st0n"]
+
+[ext_resource type="Script" path="res://Files/Levels/go_loop.gd" id="1_uepak"]
+[ext_resource type="Texture2D" uid="uid://dlrv7ohx46hpx" path="res://Assets/nxt1.png" id="2_8qusg"]
+[ext_resource type="Texture2D" uid="uid://dasixmsi3vkxd" path="res://Assets/nxt2.png" id="3_pkv5d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbr7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8qusg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pkv5d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0gdl"]
+radius = 7.0
+
+[node name="go_loop" type="Area2D"]
+show_behind_parent = true
+script = ExtResource("1_uepak")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vbr7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r0gdl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

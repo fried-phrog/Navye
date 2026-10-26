@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bivbvgjiiqvp2"]
+
+[ext_resource type="Script" path="res://Files/Levels/go_boss.gd" id="1_27es4"]
+[ext_resource type="Texture2D" uid="uid://bvguwknu5v1xw" path="res://Assets/loop1.png" id="2_j3xkq"]
+[ext_resource type="Texture2D" uid="uid://cautxfvchcsri" path="res://Assets/loop2.png" id="3_bxegn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j3xkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bxegn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqxph"]
+radius = 7.0
+
+[node name="go_boss" type="Area2D"]
+show_behind_parent = true
+script = ExtResource("1_27es4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhqid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qqxph")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
